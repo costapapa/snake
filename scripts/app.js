@@ -50,7 +50,7 @@ function init() {
    for (let i = 0; i < cellCount; i++) {
       const cell = document.createElement('div')
       // cell.innerText = i
-      // cell.dataset.index = i
+      cell.dataset.index = i
       cell.style.height = `${100 / height}%`
       cell.style.width = `${100 / width}%`
       grid.appendChild(cell)
@@ -168,6 +168,7 @@ function init() {
     const newPosition = snake[0] + snakeDirection
     //upper
     if (snakeDirection === -width && newPosition < cells[0].dataset.index) {
+      console.log("gameovr")
       return gameOverMessage()
     //downer
     } else if (snakeDirection === width && newPosition >= cellCount) {
