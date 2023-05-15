@@ -1,5 +1,4 @@
 function init() {
-  
 
   // !----- constants -----*/
   const startPosition = 95
@@ -7,43 +6,28 @@ function init() {
   const AUDIO = new Audio('scripts/642314__zagalo75__vibration.wav')
   const AUDIO_01 = new Audio('scripts/475347__fupicat__videogame-death-sound.wav')
   
-  
-  
-  
-  
-  
   // !----- state variables -----*/
   let cells = []
   const width = 20
   const height = 20
   const cellCount = width * height
   let snakeTimer;
-  // let snakeMovement = [startPosition]
-  let snakeDirection = -1 ///-- mean right ++ left up -.width down up- +.width
+  let snakeDirection = -1 
   let snake = [93, 94, 95]
   let score = 0
   let gameStart = false
-  
-  
 
-  
-  
-  
-  
   // !----- cached elements  -----*/
   const grid = document.querySelector('.grid')
   const gameOverText = document.querySelector('.game-over')
   const scoreText = document.querySelector('.score-count')
   const resetButton = document.querySelector('.button')
   
-  
   // !----- event listeners -----*/
   document.addEventListener('keydown', handleDirection)
   document.addEventListener('click', resetGame)
 
-  
   // !----- functions -----*/
-  
   
   //creates our grid to show/ use indexes at beginning to help visualise
   function renderGrid() {
@@ -60,14 +44,12 @@ function init() {
     renderSnake(startPosition)
   }
   renderGrid()
-
+  // creates border on grid and then check if food spawns on there to regenerate somewhere else.
   function borderFoodChecker() {
   for (let i = 0; i < cells.length; i++) {
     if (i < width || i % width === 0 || i > (width ** 2) - width - 1 || i % width === width - 1) {
       cells[i].classList.add('border')
-      let gridBorderCells = cells[i]
       if (cells[i].classList.contains('food') && cells[i].classList.contains('border')) {
-        console.log("hit")
         resetFood()
       }
     }
@@ -76,7 +58,6 @@ function init() {
   //add food to the game and also uses math.random to generate food elsewhere once eaten.
   function renderFood() {
     const randomPosition = Math.floor(Math.random() * cellCount)
-    // console.log("im here", randomPosition)
     cells[randomPosition].classList.add('food')
 
   }
@@ -168,7 +149,6 @@ function init() {
     const newPosition = snake[0] + snakeDirection
     //upper
     if (snakeDirection === -width && newPosition < cells[0].dataset.index) {
-      console.log("gameovr")
       return gameOverMessage()
     //downer
     } else if (snakeDirection === width && newPosition >= cellCount) {
@@ -195,9 +175,8 @@ function init() {
   function scoreAdder() {
     score++
     scoreText.innerText = score
-    // console.log("string here",score)
   }
-
+  // resets game with click of button
   function resetGame(){
    if (gameStart == true)
    { location.reload()}
