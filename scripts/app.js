@@ -22,8 +22,8 @@ function init() {
   let snakeDirection = -1 ///-- mean right ++ left up -.width down up- +.width
   let snake = [93, 94, 95]
   let score = 0
-  // let multiplier = 1
-  let snakeMovementSpeed = 500
+  let gameStart = false
+  
   
 
   
@@ -198,7 +198,9 @@ function init() {
   }
 
   function resetGame(){
-   
+   if (gameStart == true)
+   { location.reload()}
+    gameStart = true
   }
   
 
