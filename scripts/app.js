@@ -49,8 +49,8 @@ function init() {
   function renderGrid() {
    for (let i = 0; i < cellCount; i++) {
       const cell = document.createElement('div')
-      cell.innerText = i
-      cell.dataset.index = i
+      // cell.innerText = i
+      // cell.dataset.index = i
       cell.style.height = `${100 / height}%`
       cell.style.width = `${100 / width}%`
       grid.appendChild(cell)
